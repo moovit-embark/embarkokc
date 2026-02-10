@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pulse Display - Sports</title>
+
+  <link rel="manifest" href="manifest.json">
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js')
+        .then(() => console.log("App Ready"));
+    }
+  </script>
+
+  <style>
+    /* ... (Your existing styles) ... */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      height: 100vh;
+      background: #ffffff;
+      color: #3d3a3a;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .main-content {
+      margin-top: 90px; 
+      width: 100%;
+    }
+
+    .top-left-sports {
+      text-align: left; font-size: 1rem; font-weight: 500; color: #3d3a3a; line-height: 1.6;
+      margin-left: 20px; margin-bottom: 20px;
+    }
+    .highlight-sport {
+      font-weight: 700; font-size: 1.2rem; text-transform: uppercase; color: #3d3a3a;
+    }
+    .second-sport { display: block; margin-top: -6px; color: #3d3a3a; }
+
+    .container { position: relative; text-align: center; max-width: 420px; width: 100%; }
+
+    .pulse-container {
+      position: relative; 
+      width: 100%; 
+      height: 170px; 
+      margin-top: 85px;
+      margin-bottom: 30px; 
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .ring {
+      position: absolute;
+      width: 130px; 
+      height: 130px; 
+      border-radius: 50%;
+      background-color: transparent;
+    }
+
+    .main {
+      box-shadow: 0 0 0 15px #a0b15c; 
+      animation: main-pulse 6s ease-in-out infinite;
+      z-index: 1;
+    }
+
+    .dark {
+      box-shadow: 0 0 0 0px #6f873c; 
+      animation: dark-pulse 6s ease-in-out infinite;
+      z-index: 2;
+    }
+
+    @keyframes main-pulse {
+      0%, 25%, 50%, 75%, 100% { box-shadow: 0 0 0 15px #a0b15c; }
+      12% { box-shadow: 0 0 0 28px #a0b15c; }
+      37% { box-shadow: 0 0 0 42px #a0b15c; }
+      62% { box-shadow: 0 0 0 54px #a0b15c; }
+    }
+
+    @keyframes dark-pulse {
+      0%, 12%, 37%, 62%, 100% { box-shadow: 0 0 0 0px #6f873c; opacity: 0; }
+      25%, 50%, 75% { box-shadow: 0 0 0 16px #6f873c; opacity: 1; }
+    }
+
+    .logo {
+      position: absolute; 
+      top: 50%; 
+      left: 50%; 
+      transform: translate(-50%, -50%);
+      width: 85px; 
+      height: 85px; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center;
+      z-index: 10;
+    }
+    .logo img { width: 100%; height: 100%; object-fit: contain; }
+
+    .time {
+      position: relative; 
+      top: 45px; 
+      font-size: 3.8rem; font-weight: 900;
+      letter-spacing: 2px; margin-bottom: 8px; color: #3d3a3a;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.05); white-space: nowrap;
+    }
+    .ampm { font-size: 3.8rem; font-weight: 900; color: #3d3a3a; opacity: 1;
+      margin-left: 6px; vertical-align: baseline; letter-spacing: 1px; }
+
+    .text-block {
+      background: #ffffff; border-radius: 4px; padding: 15px; max-width: 365px;
+      margin: 65px auto 0; 
+      border: 1px solid rgba(0,0,0,0.05);
+      box-shadow: 0 2px 3px rgba(0,0,0,0.5), 0 -1px 2px rgba(255,255,255,0.8);
+      color: #3d3a3a; text-align: left;
+    }
+
+    .title { font-size: 1.5rem; margin-bottom: 12px; font-weight: 600; color: #3d3a3a; }
+    .subtitle { font-size: 1.15rem; line-height: 1.6; opacity: 0.9; color: #3d3a3a; }
+    .basketball { font-size: 0.95rem; display: block; margin-top: -14px; color: #3d3a3a; }
+    .hockey { font-weight: 900; color: #3d3a3a; }
+
+    .nav-icon { position: absolute; top: 0px; font-size: 2.9rem; font-weight: 300; cursor: pointer; user-select: none; color: #444; line-height: 1; text-decoration: none; display: block; }
+    .back-arrow { left: 14px; padding-top: 5px; }
+    .info-circle { position: absolute; right: 20px; top: 20px; width: 22px; height: 22px; background: transparent; border: 2px solid #2580de; color: #2580de; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; font-weight: 800; line-height: 1; text-decoration: none; z-index: 999; }
+  </style>
+</head>
+<body>
+
+<a href="index.html" class="nav-icon back-arrow">←</a>
+<a href="info.html" class="info-circle">i</a>
+
+<div class="main-content">
+  <div class="top-left-sports">
+    <span class="highlight-sport">EMBARK</span><br>
+    <span class="second-sport">Show operator your ticket</span>
+  </div>
+
+  <div class="container">
+    <div class="pulse-container">
+      <div class="ring main"></div>
+      <div class="ring dark"></div>
+      <div class="logo">
+        <img src="embarklogo.png" alt="Embark Logo">
+      </div>
+    </div>
+
+    <div class="time" id="clock">0:00:00<span class="ampm">AM</span></div>
+
+    <div class="text-block">
+      <div class="title">Adult Bus 30-Day Universal</div>
+      <div class="subtitle">
+        <span class="basketball">Oklahoma City, OK</span><br>
+        <span class="hockey" id="expires-text"></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function updateClock() {
+    const now = new Date();
+    let h = now.getHours();
+    const m = now.getMinutes().toString().padStart(2, '0');
+    const s = now.getSeconds().toString().padStart(2, '0');
+    const ampm = h >= 12 ? 'PM' : 'AM';
+    h = h % 12 || 12;
+    document.getElementById('clock').innerHTML = `${h}:${m}:${s}<span class="ampm">${ampm}</span>`;
+  }
+  updateClock();
+  setInterval(updateClock, 1000);
+
+  const daysUntilExpire = 7;
+  const expireOffsetHours = 2;
+  const expireOffsetMinutes = 33;
+  const now = new Date();
+  const expireDate = new Date(now);
+  expireDate.setDate(now.getDate() + daysUntilExpire);
+  expireDate.setHours(now.getHours() + expireOffsetHours);
+  expireDate.setMinutes(now.getMinutes() + expireOffsetMinutes);
+  const options = { month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit' };
+  document.getElementById('expires-text').textContent = `Expires ${expireDate.toLocaleString('en-US', options)}`;
+</script>
+
+</body>
+</html>
