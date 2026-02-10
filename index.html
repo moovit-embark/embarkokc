@@ -247,7 +247,6 @@
 </nav>
 
 <script>
-    // Update the ticket expiry text
     function updateExpiryDate() {
         const now = new Date();
         now.setDate(now.getDate() + 7);
@@ -260,19 +259,18 @@
     }
     updateExpiryDate();
 
-    // REGISTER SERVICE WORKER
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
             navigator.serviceWorker.register('./sw.js')
-                .then(reg => console.log('Service Worker registered successfully:', reg.scope))
-                .catch(err => console.error('Service Worker registration failed:', err));
+                .then(reg => console.log('SW registered!', reg.scope))
+                .catch(err => console.error('SW failed!', err));
         });
     }
 </script>
 
 </body>
 </html>
-        header h1 { flex-grow: 1; font-size: 18px; font-weight: 500; margin-left: 12px; }
+ght: 500; margin-left: 12px; }
 
         .header-icon { width: 24px; height: 24px; fill: #5f6368; }
 
@@ -498,4 +496,5 @@
 
 </body>
 </html>
+
 
