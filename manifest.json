@@ -1,16 +1,18 @@
 {
-  "Moovit": "Embark",
   "name": "Moovit",
+  "short_name": "Moovit",
   "icons": [
     {
       "src": "moovitlogo.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     },
     {
       "src": "moovitlogo.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     }
   ],
   "start_url": "./index.html",
@@ -18,4 +20,3 @@
   "display": "standalone",
   "theme_color": "#ffffff"
 }
-
