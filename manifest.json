@@ -1,0 +1,21 @@
+{
+  "Moovit": "Embark",
+  "name": "Embark Ticket",
+  "icons": [
+    {
+      "src": "embarklogo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "embarklogo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "./index.html",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "theme_color": "#ffffff"
+}
+
