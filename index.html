@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Tickets</title>
     <meta name="theme-color" content="#ffffff">
+    <link rel="manifest" href="manifest.json">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -23,7 +24,7 @@
             font-family: 'Roboto', sans-serif;
             background-color: var(--bg-light);
             color: var(--text-dark);
-            padding-bottom: 80px; 
+            padding-bottom: 120px; 
         }
 
         header {
@@ -37,21 +38,37 @@
 
         header h1 { flex-grow: 1; font-size: 18px; font-weight: 500; margin-left: 12px; }
 
+        .header-icon { width: 24px; height: 24px; fill: #5f6368; }
+
         main { padding: 16px; }
 
-        h2 { font-size: 14px; margin: 24px 0 12px 0; font-weight: 700; color: var(--text-gray); text-transform: uppercase; letter-spacing: 0.5px;}
+        h2 { font-size: 20px; margin: 24px 0 16px 0; font-weight: 700; color: #3c4043; }
 
-        /* Ticket Card Styles */
+        .card-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            margin-bottom: 12px;
+        }
+
         .card-active-style {
             background: #fff;
             border-radius: 12px;
-            border: 2px solid var(--active-green);
+            border: 2.5px solid var(--active-green);
             padding: 16px;
-            display: none; /* Hidden until activated */
+            display: flex;
             flex-direction: column;
-            text-decoration: none;
-            color: inherit;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .card-shadow-style {
+            background: #fff;
+            border-radius: 12px;
+            border: 2px solid var(--border-light);
+            padding: 16px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 0px rgba(0,0,0,0.15);
         }
 
         .card-top-row { display: flex; align-items: flex-start; width: 100%; }
@@ -59,108 +76,31 @@
         .logo-box-solid {
             width: 44px;
             height: 44px;
+            background-color: transparent; 
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             margin-right: 14px;
             flex-shrink: 0;
+            overflow: hidden;
         }
 
-        .logo-box-solid img { width: 100%; height: 100%; object-fit: contain; }
+        .logo-box-solid img {
+            width: 60%;
+            height: 60%;
+            object-fit: contain;
+        }
 
         .card-content { flex-grow: 1; }
-        .card-title { font-size: 17px; font-weight: 700; margin-bottom: 2px; }
+        .card-title { font-size: 17px; font-weight: 500; margin-bottom: 2px; }
         .card-subtitle { font-size: 14px; color: var(--text-gray); }
-
         .card-divider { height: 1px; background-color: var(--border-light); margin: 16px 0; width: 100%; }
 
         .btn-outline {
             display: inline-flex;
-            justify-content: center;
-            padding: 8px 16px;
+            padding: 6px 14px;
             border: 1.5px solid var(--primary-blue);
-            border-radius: 20px;
+            border-radius: 18px;
             color: var(--primary-blue);
             font-size: 14px;
-            font-weight: 500;
-            text-align: center;
-        }
-
-        /* Bottom Nav */
-        .bottom-nav {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            height: 65px;
-            background: white;
-            border-top: 1px solid var(--border-light);
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-        }
-
-        .nav-item { text-align: center; color: var(--text-gray); font-size: 12px; text-decoration: none; }
-        .nav-item.active { color: var(--primary-blue); }
-        .nav-icon { font-size: 20px; display: block; margin-bottom: 4px; }
-    </style>
-</head>
-<body>
-
-    <header>
-        <svg class="header-icon" viewBox="0 0 24 24" width="24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
-        <h1>My Tickets</h1>
-    </header>
-
-    <main>
-        <h2>Active</h2>
-
-        <a href="ticket.html" class="card-active-style" id="active-card">
-            <div class="card-top-row">
-                <div class="logo-box-solid">
-                    <img src="logo.png" alt="Logo">
-                </div>
-                <div class="card-content">
-                    <div class="card-title">30-Day Monthly Pass</div>
-                    <div class="card-subtitle" id="ticket-expiry-display">Active until --/--/---- --:-- --</div>
-                </div>
-            </div>
-            <div class="card-divider"></div>
-            <div class="btn-outline">View ticket</div>
-        </a>
-
-        <div id="no-tickets" style="text-align: center; margin-top: 50px; color: var(--text-gray);">
-            <p>You have no active tickets.</p>
-            <a href="buy.html" style="color: var(--primary-blue); text-decoration: none; font-weight: 500; display: block; margin-top: 10px;">Buy a ticket</a>
-        </div>
-    </main>
-
-    <nav class="bottom-nav">
-        <a href="#" class="nav-item">
-            <span class="nav-icon">🏠</span>Home
-        </a>
-        <a href="#" class="nav-item active">
-            <span class="nav-icon">🎫</span>Tickets
-        </a>
-        <a href="#" class="nav-item">
-            <span class="nav-icon">👤</span>More
-        </a>
-    </nav>
-
-    <script>
-        window.onload = function() {
-            // SYNC LOGIC: Check if a ticket was activated
-            const isActive = localStorage.getItem('is_active');
-            const storedExpiry = localStorage.getItem('ticket_expiry');
-
-            if (isActive === 'true' && storedExpiry) {
-                // Remove "Expires " so it says "Active until Feb 24, 2026, 7:43 PM"
-                const cleanDate = storedExpiry.replace('Expires ', '');
-                
-                document.getElementById('ticket-expiry-display').textContent = `Active until ${cleanDate}`;
-                document.getElementById('active-card').style.display = 'flex';
-                document.getElementById('no-tickets').style.display = 'none';
-            } else {
-                document.getElementById('active-card').style.display = 'none';
-                document.getElementById('no-tickets').style.display = 'block';
-            }
-        };
-    </script>
-</body>
-</html>
