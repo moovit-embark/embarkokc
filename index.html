@@ -104,3 +104,170 @@
             border-radius: 18px;
             color: var(--primary-blue);
             font-size: 14px;
+            font-weight: 500;
+            align-items: center;
+            gap: 8px;
+            align-self: flex-start;
+        }
+
+        .show-all {
+            display: block;
+            text-align: right;
+            color: var(--primary-blue);
+            font-weight: 500;
+            font-size: 14px;
+            margin-top: 8px;
+            margin-right: 2px;
+        }
+
+        .purchase-history-container {
+            width: 100%;
+            text-align: center;
+            padding: 24px 0;
+        }
+
+        .purchase-history-link {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+        }
+
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 80px;
+            background: #ffffff;
+            border-top: 1px solid var(--border-light);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .nav-item { text-align: center; color: var(--text-gray); text-decoration: none; font-size: 12px; }
+        .nav-item.active { color: var(--primary-blue); }
+        
+        .nav-icon-orange { display: block; margin: 0 auto 4px auto; width: 24px; height: 24px; fill: var(--orange-brand); }
+        .nav-icon-gray-svg { display: block; margin: 0 auto 4px auto; width: 22px; height: 22px; }
+        
+        .stations-pin { width: 22px; height: 22px; fill: #5f6368; display: block; margin: 0 auto 4px auto; }
+
+        .orange-box-solid {
+            background-color: var(--orange-brand);
+            border-radius: 8px;
+            width: 85px;
+            height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 16px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <svg class="header-icon" viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+    <h1>My tickets</h1>
+    <svg class="header-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
+</header>
+
+<main>
+    <h2>My rides</h2>
+    
+    <a href="ticket.html" class="card-link">
+        <div class="card-active-style">
+            <div class="card-top-row">
+                <div class="logo-box-solid">
+                    <img src="embarklogo2.jpg" alt="Logo">
+                </div>
+                <div class="card-content">
+                    <div class="card-title">Adult Bus 30-Day Universal</div>
+                    <div class="card-subtitle" id="expiry-date">Active until ...</div>
+                </div>
+            </div>
+            <div class="card-divider"></div>
+            
+            <div class="btn-outline">
+                <svg width="20" height="14" viewBox="0 0 24 16" fill="var(--primary-blue)"><path d="M2 0a2 2 0 00-2 2v2a2 2 0 110 4v2a2 2 0 002 2h20a2 2 0 002-2V8a2 2 0 110-4V2a2 2 0 00-2-2H2zm2 3h16v2.2a4 4 0 000 5.6V13H4V10.8a4 4 0 000-5.6V3z"/></svg>
+                View ticket
+            </div>
+        </div>
+    </a>
+
+    <div class="show-all">Show all</div>
+
+    <h2>Pay for rides</h2>
+    <div class="card-shadow-style">
+        <div style="margin-right: 14px;">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--primary-blue)" stroke-width="2"><path d="M2 4a2 2 0 012-2h16a2 2 0 012 2v4a2 2 0 000 4v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4a2 2 0 000-4V4z"/></svg>
+        </div>
+        <div class="card-content">
+            <div class="card-title">Buy city tickets</div>
+            <div class="card-subtitle">Select the agency and purchase a ticket</div>
+        </div>
+    </div>
+
+    <h2>U.S. travel tickets</h2>
+    <div class="card-shadow-style">
+        <div class="orange-box-solid">
+            <svg width="40" height="26" viewBox="0 0 24 16" fill="white"><path d="M2 0C.9 0 0 .9 0 2v2c1.1 0 2 .9 2 2s-.9 2-2 2v2c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V8c-1.1 0-2-.9-2-2s.9-2 2-2V2c0-1.1-.9-2-2-2H2z"/></svg>
+        </div>
+        <div class="card-content">
+            <div class="card-title">Book rides across America</div>
+        </div>
+    </div>
+
+    <div class="purchase-history-container">
+        <a href="#" class="purchase-history-link">Purchase history</a>
+    </div>
+</main>
+
+<nav class="bottom-nav">
+    <div class="nav-item">
+        <svg class="nav-icon-gray-svg" viewBox="0 0 24 24" fill="none" stroke="#5f6368" stroke-width="2.2"><circle cx="7" cy="12" r="3"/><circle cx="17" cy="12" r="3"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+        Directions
+    </div>
+    <div class="nav-item">
+        <svg class="stations-pin" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        Stations
+    </div>
+    <div class="nav-item">
+        <svg class="nav-icon-gray-svg" viewBox="0 0 24 24" fill="none" stroke="#5f6368" stroke-width="2.2">
+            <circle cx="5" cy="12" r="2.5"/><circle cx="12" cy="12" r="2.5"/><circle cx="19" cy="12" r="2.5"/>
+            <line x1="7.5" y1="12" x2="9.5" y2="12"/><line x1="14.5" y1="12" x2="16.5" y2="12"/>
+        </svg>
+        Lines
+    </div>
+    <div class="nav-item active">
+        <svg class="nav-icon-orange" viewBox="0 0 24 24"><path d="M22 10V6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v4c1.1 0 2 .9 2 2s-.9 2-2 2v4c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-4c-1.1 0-2-.9-2-2s.9-2 2-2zm-9 7.5h-2v-2h2v2zm0-4.5h-2v-2h2v2zm0-4.5h-2v-2h2v2z"/></svg>
+        <span style="color: var(--primary-blue)">Tickets</span>
+    </div>
+</nav>
+
+<script>
+    function updateExpiryDate() {
+        const now = new Date();
+        now.setDate(now.getDate() + 7);
+        const month = now.getMonth() + 1;
+        const day = now.getDate();
+        const year = now.getFullYear();
+        const formattedDate = `Active until ${month}/${day}/${year}, 4:51 AM`;
+        const el = document.getElementById('expiry-date');
+        if (el) el.innerText = formattedDate;
+    }
+    updateExpiryDate();
+
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('./sw.js')
+                .then(reg => console.log('SW registered!', reg.scope))
+                .catch(err => console.error('SW failed!', err));
+        });
+    }
+</script>
+
+</body>
+</html>
